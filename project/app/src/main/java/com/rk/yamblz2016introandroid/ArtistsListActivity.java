@@ -1,0 +1,13 @@
+package com.rk.yamblz2016introandroid;
+
+import android.app.Activity;
+import android.os.Bundle;
+
+public class ArtistsListActivity extends Activity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_artists_list);
+    }
+}
