@@ -14,7 +14,7 @@ public class ArtistsListActivity extends Activity {
         setContentView(R.layout.activity_artists_list);
 
         RequestQueue queue = Volley.newRequestQueue(this);
-        String url = "http://download.cdn.yandex.net/mobilization-2016/artist678s.json";
+        String url = getString(R.string.artists_url);;
 
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
                 new Response.Listener<String>() {
