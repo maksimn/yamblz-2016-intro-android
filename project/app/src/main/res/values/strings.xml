@@ -1,4 +1,4 @@
 <resources>
-    <string name="app_name">Yamblz 2016 Intro Android</string>
+    <string name="app_name">Исполнители</string>
     <string name="artists_url">http://download.cdn.yandex.net/mobilization-2016/artists.json</string>
 </resources>
