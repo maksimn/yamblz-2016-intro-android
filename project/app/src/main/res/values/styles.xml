@@ -1,2 +1,9 @@
 <resources>
+    <style name="AppTheme" parent="@android:style/Theme.Holo.Light">
+        <item name="android:actionBarStyle">@style/ActionBarTheme</item>
+    </style>
+
+    <style name="ActionBarTheme" parent="@android:style/Widget.Holo.Light.ActionBar">
+        <item name="android:background">@color/appBarBackgroundColor</item>
+    </style>
 </resources>
