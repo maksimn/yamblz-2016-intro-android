@@ -3,7 +3,6 @@ package com.rk.yamblz2016introandroid;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.os.Bundle;
-import android.widget.TextView;
 
 import com.rk.yamblz2016introandroid.requests.*;
 
