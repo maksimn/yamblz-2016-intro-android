@@ -16,19 +16,16 @@ public class ArtistsListActivity extends AppCompatActivity {
         final Toolbar toolbar = (Toolbar)findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        final TextView textView = findViewById(R.id.textView);
         final String url = getString(R.string.artists_url);
         final RequestMaker rm = new RequestMaker(this);
 
         rm.makeRequest(url, new RequestResultHandler() {
             @Override
-            public void onResponse(String response) {
-                textView.setText(response.substring(0, 50));
+            public void onResponse() {
             }
 
             @Override
             public void onErrorResponse(Exception error) {
-                textView.setText("Error quering data.");
             }
         });
     }
