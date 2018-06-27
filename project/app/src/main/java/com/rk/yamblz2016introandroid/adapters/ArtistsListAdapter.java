@@ -2,17 +2,13 @@ package com.rk.yamblz2016introandroid.adapters;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
+import android.view.*;
 import android.widget.TextView;
-
 import com.rk.yamblz2016introandroid.models.Artist;
 import com.rk.yamblz2016introandroid.R;
 import java.util.List;
 
 public class ArtistsListAdapter extends RecyclerView.Adapter<ArtistsListAdapter.ViewHolder> {
-
     private List<Artist> mData;
     private LayoutInflater mInflater;
     private ItemClickListener mClickListener;
@@ -59,13 +55,10 @@ public class ArtistsListAdapter extends RecyclerView.Adapter<ArtistsListAdapter.
 
         @Override
         public void onClick(View view) {
-            if (mClickListener != null) mClickListener.onItemClick(view, getAdapterPosition());
+            if (mClickListener != null) {
+                mClickListener.onItemClick(view, getAdapterPosition());
+            }
         }
-    }
-
-    // convenience method for getting data at click position
-    Artist getItem(int id) {
-        return mData.get(id);
     }
 
     // allows clicks events to be caught

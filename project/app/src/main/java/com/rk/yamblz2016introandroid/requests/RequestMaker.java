@@ -1,5 +1,6 @@
 package com.rk.yamblz2016introandroid.requests;
 
+import java.io.UnsupportedEncodingException;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import android.content.Context;
@@ -24,7 +25,14 @@ public class RequestMaker {
                     @Override
                     public void onResponse(String response) {
                         Type listType = new TypeToken<ArrayList<Artist>>(){}.getType();
-                        Artists.List = new Gson().fromJson(response, listType);
+                        String result;
+                        try {
+                            byte bytes[] = response.getBytes("ISO-8859-1");
+                            result = new String(bytes, "UTF-8");
+                        } catch (UnsupportedEncodingException e) {
+                            result = response;
+                        }
+                        Artists.List = new Gson().fromJson(result, listType);
                         // In handler onResponse() callback you can get data from Artists.list
                         handler.onResponse();
                     }
