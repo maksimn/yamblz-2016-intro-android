@@ -25,6 +25,7 @@ public class RequestMaker {
                     public void onResponse(String response) {
                         Type listType = new TypeToken<ArrayList<Artist>>(){}.getType();
                         Artists.List = new Gson().fromJson(response, listType);
+                        // In handler onResponse() callback you can get data from Artists.list
                         handler.onResponse();
                     }
                 },
