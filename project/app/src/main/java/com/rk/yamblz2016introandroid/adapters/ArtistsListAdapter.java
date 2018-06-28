@@ -31,7 +31,20 @@ public class ArtistsListAdapter extends RecyclerView.Adapter<ArtistsListAdapter.
     public void onBindViewHolder(ViewHolder holder, int position) {
         Artist artist = mData.get(position);
         holder.artistNameTextView.setText(artist.name);
-        holder.artistGenresTextView.setText(artist.genres.length > 0 ? artist.genres[0]: "");
+        holder.artistGenresTextView.setText(getGenresString(artist.genres));
+    }
+
+    private String getGenresString(String[] genres) {
+        StringBuilder builder = new StringBuilder();
+
+        for(String s : genres) {
+            builder.append(s);
+            builder.append(", ");
+        }
+
+        builder.setLength(genres.length > 0 ? builder.length() - 2: builder.length());
+
+        return builder.toString();
     }
 
     // total number of rows
