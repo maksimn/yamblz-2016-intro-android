@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:padding="10dp">
+    tools:context="com.rk.yamblz2016introandroid.ArtistsListActivity">
 
     <TextView
         android:id="@+id/artistName"
@@ -16,6 +15,14 @@
         android:id="@+id/artistGenres"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20sp"
         android:textSize="12sp"/>
 
-</LinearLayout>
+    <TextView
+        android:id="@+id/albumsAndSongs"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40sp"
+        android:layout_marginBottom="10sp"
+        android:textSize="12sp"/>
+</FrameLayout>

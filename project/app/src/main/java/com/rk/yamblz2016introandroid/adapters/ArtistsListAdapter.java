@@ -3,9 +3,12 @@ package com.rk.yamblz2016introandroid.adapters;
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.*;
-import android.widget.TextView;
+import android.widget.*;
 import com.rk.yamblz2016introandroid.models.Artist;
 import com.rk.yamblz2016introandroid.R;
+
+import org.w3c.dom.Text;
+
 import java.util.List;
 
 public class ArtistsListAdapter extends RecyclerView.Adapter<ArtistsListAdapter.ViewHolder> {
@@ -32,6 +35,8 @@ public class ArtistsListAdapter extends RecyclerView.Adapter<ArtistsListAdapter.
         Artist artist = mData.get(position);
         holder.artistNameTextView.setText(artist.name);
         holder.artistGenresTextView.setText(getGenresString(artist.genres));
+        holder.albumsAndSongsTextView.setText(artist.albums + " альбомов, " +
+                artist.tracks + " песен");
     }
 
     private String getGenresString(String[] genres) {
@@ -58,11 +63,13 @@ public class ArtistsListAdapter extends RecyclerView.Adapter<ArtistsListAdapter.
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView artistNameTextView;
         TextView artistGenresTextView;
+        TextView albumsAndSongsTextView;
 
         ViewHolder(View itemView) {
             super(itemView);
             artistNameTextView = itemView.findViewById(R.id.artistName);
             artistGenresTextView = itemView.findViewById(R.id.artistGenres);
+            albumsAndSongsTextView = itemView.findViewById(R.id.albumsAndSongs);
             itemView.setOnClickListener(this);
         }
 
