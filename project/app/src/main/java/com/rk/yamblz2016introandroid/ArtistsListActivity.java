@@ -6,6 +6,8 @@ import android.support.v7.widget.Toolbar;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.os.Bundle;
+import android.widget.Toast;
+
 import com.rk.yamblz2016introandroid.adapters.*;
 import com.rk.yamblz2016introandroid.models.Artists;
 import com.rk.yamblz2016introandroid.requests.*;
@@ -39,6 +41,9 @@ public class ArtistsListActivity extends AppCompatActivity implements ArtistsLis
             @Override
             public void onErrorResponse(Exception error) {
                 // show error of the data request on the device screen
+                Toast toast = Toast.makeText(self,
+                        "Ошибка получения данных приложения", Toast.LENGTH_LONG);
+                toast.show();
             }
         });
     }
