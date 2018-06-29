@@ -24,7 +24,7 @@ public class ArtistsListActivity extends AppCompatActivity implements ArtistsLis
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         final String url = getString(R.string.artists_url);
-        final RequestMaker rm = new RequestMaker(this);
+        final RequestMaker rm = new VolleyRequestMaker(this);
         final ArtistsListActivity self = this;
 
         rm.makeRequest(url, new RequestResultHandler() {
