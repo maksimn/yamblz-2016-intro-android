@@ -1,13 +1,12 @@
 package com.rk.yamblz2016introandroid.adapters;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.support.v7.widget.RecyclerView;
 import android.view.*;
 import android.widget.*;
 import com.rk.yamblz2016introandroid.models.Artist;
 import com.rk.yamblz2016introandroid.R;
-
-import org.w3c.dom.Text;
 
 import java.util.List;
 
@@ -15,9 +14,11 @@ public class ArtistsListAdapter extends RecyclerView.Adapter<ArtistsListAdapter.
     private List<Artist> mData;
     private LayoutInflater mInflater;
     private ItemClickListener mClickListener;
+    private Context context;
 
     // data is passed into the constructor
     public ArtistsListAdapter(Context context, List<Artist> data) {
+        this.context = context;
         this.mInflater = LayoutInflater.from(context);
         this.mData = data;
     }
@@ -35,8 +36,12 @@ public class ArtistsListAdapter extends RecyclerView.Adapter<ArtistsListAdapter.
         Artist artist = mData.get(position);
         holder.artistNameTextView.setText(artist.name);
         holder.artistGenresTextView.setText(getGenresString(artist.genres));
-        holder.albumsAndSongsTextView.setText(artist.albums + " альбомов, " +
-                artist.tracks + " песен");
+
+        Resources res = context.getResources();
+        String albums = res.getQuantityString(R.plurals.albums, artist.albums, artist.albums);
+        String tracks = res.getQuantityString(R.plurals.tracks, artist.tracks, artist.tracks);
+
+        holder.albumsAndSongsTextView.setText(albums + ", " + tracks);
     }
 
     private String getGenresString(String[] genres) {

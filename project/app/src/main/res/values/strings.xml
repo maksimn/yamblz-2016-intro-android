@@ -1,4 +1,21 @@
 <resources>
     <string name="app_name">Исполнители</string>
     <string name="artists_url">http://download.cdn.yandex.net/mobilization-2016/artists.json</string>
+
+    <plurals name="albums">
+        <item quantity="zero">Нет альбомов</item>
+        <item quantity="one">%1$d альбом</item>
+        <item quantity="two">%1$d альбома</item>
+        <item quantity="few">%1$d альбома</item>
+        <item quantity="many">%1$d альбомов</item>
+        <item quantity="other">%1$d альбомов</item>
+    </plurals>
+    <plurals name="tracks">
+        <item quantity="zero">нет песен</item>
+        <item quantity="one">%1$d песня</item>
+        <item quantity="two">%1$d песни</item>
+        <item quantity="few">%1$d песни</item>
+        <item quantity="many">%1$d песен</item>
+        <item quantity="other">%1$d песен</item>
+    </plurals>
 </resources>
