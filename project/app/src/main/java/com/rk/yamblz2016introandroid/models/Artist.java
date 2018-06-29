@@ -11,4 +11,5 @@ public class Artist {
     public int albums;
     public int tracks;
     public Cover cover;
+    public String description;
 }

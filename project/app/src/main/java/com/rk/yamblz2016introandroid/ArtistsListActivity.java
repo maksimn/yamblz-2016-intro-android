@@ -41,15 +41,14 @@ public class ArtistsListActivity extends AppCompatActivity implements ArtistsLis
             @Override
             public void onErrorResponse(Exception error) {
                 // show error of the data request on the device screen
-                Toast toast = Toast.makeText(self,
-                        "Ошибка получения данных приложения", Toast.LENGTH_LONG);
-                toast.show();
+                Toast.makeText(self, "Ошибка получения данных приложения",
+                        Toast.LENGTH_LONG).show();
             }
         });
     }
 
     @Override
     public void onItemClick(View view, int position) {
-
+        setContentView(R.layout.artist_detail);
     }
 }
