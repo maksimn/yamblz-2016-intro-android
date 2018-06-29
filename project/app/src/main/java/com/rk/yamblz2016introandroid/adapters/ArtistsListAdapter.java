@@ -2,12 +2,16 @@ package com.rk.yamblz2016introandroid.adapters;
 
 import android.content.Context;
 import android.content.res.Resources;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.media.Image;
 import android.support.v7.widget.RecyclerView;
 import android.view.*;
 import android.widget.*;
+
+import com.budiyev.android.imageloader.ImageLoader;
 import com.rk.yamblz2016introandroid.models.Artist;
 import com.rk.yamblz2016introandroid.R;
-
 import java.util.List;
 
 public class ArtistsListAdapter extends RecyclerView.Adapter<ArtistsListAdapter.ViewHolder> {
@@ -42,6 +46,13 @@ public class ArtistsListAdapter extends RecyclerView.Adapter<ArtistsListAdapter.
         String tracks = res.getQuantityString(R.plurals.tracks, artist.tracks, artist.tracks);
 
         holder.albumsAndSongsTextView.setText(albums + ", " + tracks);
+
+        ColorDrawable emptyPicture = new ColorDrawable(Color.rgb(210, 210, 210));
+        ImageLoader.with(context)
+                .from(artist.cover.small)
+                .size(300, 30)
+                .errorDrawable(emptyPicture)
+                .load(holder.artistCoverSmall);
     }
 
     private String getGenresString(String[] genres) {
@@ -69,12 +80,14 @@ public class ArtistsListAdapter extends RecyclerView.Adapter<ArtistsListAdapter.
         TextView artistNameTextView;
         TextView artistGenresTextView;
         TextView albumsAndSongsTextView;
+        ImageView artistCoverSmall;
 
         ViewHolder(View itemView) {
             super(itemView);
             artistNameTextView = itemView.findViewById(R.id.artistName);
             artistGenresTextView = itemView.findViewById(R.id.artistGenres);
             albumsAndSongsTextView = itemView.findViewById(R.id.albumsAndSongs);
+            artistCoverSmall = itemView.findViewById(R.id.artistCoverSmall);
             itemView.setOnClickListener(this);
         }
 

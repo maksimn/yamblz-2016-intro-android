@@ -28,4 +28,5 @@ dependencies {
     implementation 'com.android.support:appcompat-v7:28.0.0-alpha3'
     implementation 'com.google.code.gson:gson:2.8.5'
     implementation 'com.android.support:recyclerview-v7:28.0.0-alpha3'
+    implementation 'com.budiyev.android:image-loader:2.5.5'
 }

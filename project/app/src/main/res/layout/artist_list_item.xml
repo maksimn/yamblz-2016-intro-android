@@ -5,6 +5,13 @@
     android:layout_height="wrap_content"
     tools:context="com.rk.yamblz2016introandroid.ArtistsListActivity">
 
+    <ImageView
+        android:id="@+id/artistCoverSmall"
+        android:layout_width="96dp"
+        android:layout_height="96dp"
+        android:layout_marginTop="14dp"
+        android:layout_marginLeft="14dp" />
+
     <TextView
         android:id="@+id/artistName"
         android:layout_width="wrap_content"
