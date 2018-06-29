@@ -2,4 +2,6 @@
 <resources>
     <color name="toolbarBackground">#967AD6</color>
     <color name="statusBarBackground">#7F67B6</color>
+    <color name="black">#000000</color>
+    <color name="horizontalDivider">#cccccc</color>
 </resources>
