@@ -12,4 +12,16 @@ public class Artist {
     public int tracks;
     public Cover cover;
     public String description;
+    public static String getGenresString(String[] genres) {
+        StringBuilder builder = new StringBuilder();
+
+        for(String s : genres) {
+            builder.append(s);
+            builder.append(", ");
+        }
+
+        builder.setLength(genres.length > 0 ? builder.length() - 2: builder.length());
+
+        return builder.toString();
+    }
 }

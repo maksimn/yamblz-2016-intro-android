@@ -10,9 +10,28 @@
         layout="@layout/toolbar"
         android:id="@+id/toolbar"/>
 
+    <ImageView
+        android:id="@+id/artistCoverBig"
+        android:layout_width="400dp"
+        android:layout_height="240dp"/>
+
+    <TextView
+        android:id="@+id/artistGenres"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
     <TextView
         android:id="@+id/albumsAndSongs"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Биография"/>
+
+    <TextView
+        android:id="@+id/artistDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
 </LinearLayout>
