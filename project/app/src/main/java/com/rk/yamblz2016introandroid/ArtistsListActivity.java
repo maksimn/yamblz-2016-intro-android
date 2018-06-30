@@ -18,6 +18,7 @@ import com.rk.yamblz2016introandroid.requests.*;
 public class ArtistsListActivity extends AppCompatActivity implements ArtistsListAdapter.ItemClickListener {
     private ArtistsListAdapter adapter;
     private static int layoutPosition;
+    private static int offset;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,8 +41,8 @@ public class ArtistsListActivity extends AppCompatActivity implements ArtistsLis
                 adapter = new ArtistsListAdapter(self, Artists.List);
                 adapter.setClickListener(self);
                 recyclerView.setAdapter(adapter);
-                RecyclerView.LayoutManager layoutManager = recyclerView.getLayoutManager();
-                layoutManager.scrollToPosition(layoutPosition);
+                LinearLayoutManager layoutManager =(LinearLayoutManager)recyclerView.getLayoutManager();
+                layoutManager.scrollToPositionWithOffset(layoutPosition, offset);
             }
 
             @Override
@@ -55,7 +56,12 @@ public class ArtistsListActivity extends AppCompatActivity implements ArtistsLis
 
     @Override
     public void onItemClick(View view, int position) {
-        layoutPosition = position;
+        final RecyclerView recyclerView = findViewById(R.id.artistsList);
+        RecyclerView.LayoutManager layoutManager = recyclerView.getLayoutManager();
+        LinearLayoutManager linearLayoutManager = (LinearLayoutManager)layoutManager;
+        layoutPosition = linearLayoutManager.findFirstVisibleItemPosition();
+        View v = layoutManager.getChildAt(0);
+        offset = v.getTop();
         Intent intent = new Intent(this, ArtistDetailActivity.class);
         Artist artist = Artists.List.get(position);
         intent.putExtra("text/json", new Gson().toJson(artist));
