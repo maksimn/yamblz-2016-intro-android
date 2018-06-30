@@ -1,5 +1,6 @@
 package com.rk.yamblz2016introandroid;
 
+import android.content.Intent;
 import android.view.View;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -8,7 +9,9 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.os.Bundle;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
 import com.rk.yamblz2016introandroid.adapters.*;
+import com.rk.yamblz2016introandroid.models.Artist;
 import com.rk.yamblz2016introandroid.models.Artists;
 import com.rk.yamblz2016introandroid.requests.*;
 
@@ -49,6 +52,9 @@ public class ArtistsListActivity extends AppCompatActivity implements ArtistsLis
 
     @Override
     public void onItemClick(View view, int position) {
-        setContentView(R.layout.artist_detail);
+        Intent intent = new Intent(this, ArtistDetailActivity.class);
+        Artist artist = Artists.List.get(position);
+        intent.putExtra("text/json", new Gson().toJson(artist));
+        startActivity(intent);
     }
 }
