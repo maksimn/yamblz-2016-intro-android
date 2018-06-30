@@ -18,20 +18,35 @@
     <TextView
         android:id="@+id/artistGenres"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_marginTop="14dp"
+        android:layout_marginLeft="14dp"/>
 
     <TextView
         android:id="@+id/albumsAndSongs"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_marginTop="14dp"
+        android:layout_marginLeft="14dp"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginLeft="14dp"
+        android:textColor="@color/black"
+        android:textSize="18sp"
         android:text="Биография"/>
 
     <TextView
         android:id="@+id/artistDescription"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:layout_marginLeft="14dp"
+        android:layout_marginRight="14dp"
+        android:layout_marginBottom="12dp"
+        android:textColor="@color/black"
+        android:maxLines = "500"
+        android:scrollbars = "vertical"/>
 </LinearLayout>
