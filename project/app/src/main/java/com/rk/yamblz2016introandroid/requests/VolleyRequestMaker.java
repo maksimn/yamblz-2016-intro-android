@@ -1,14 +1,9 @@
 package com.rk.yamblz2016introandroid.requests;
 
 import java.io.UnsupportedEncodingException;
-import java.lang.reflect.Type;
-import java.util.ArrayList;
 import android.content.Context;
 import com.android.volley.*;
 import com.android.volley.toolbox.*;
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
-import com.rk.yamblz2016introandroid.models.*;
 
 public class VolleyRequestMaker implements RequestMaker {
     private Context context;
@@ -24,7 +19,6 @@ public class VolleyRequestMaker implements RequestMaker {
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        Type listType = new TypeToken<ArrayList<Artist>>(){}.getType();
                         String result;
                         try {
                             byte bytes[] = response.getBytes("ISO-8859-1");
@@ -32,9 +26,7 @@ public class VolleyRequestMaker implements RequestMaker {
                         } catch (UnsupportedEncodingException e) {
                             result = response;
                         }
-                        Artists.List = new Gson().fromJson(result, listType);
-                        // In handler onResponse() callback you can get data from Artists.list
-                        handler.onResponse();
+                        handler.onResponse(result);
                     }
                 },
                 new Response.ErrorListener() {

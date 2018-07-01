@@ -10,10 +10,15 @@ import android.os.Bundle;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
-import com.rk.yamblz2016introandroid.adapters.*;
-import com.rk.yamblz2016introandroid.models.Artist;
-import com.rk.yamblz2016introandroid.models.Artists;
-import com.rk.yamblz2016introandroid.requests.*;
+import com.google.gson.reflect.TypeToken;
+import com.rk.yamblz2016introandroid.adapters.ArtistsListAdapter;
+import com.rk.yamblz2016introandroid.models.*;
+import com.rk.yamblz2016introandroid.requests.RequestMaker;
+import com.rk.yamblz2016introandroid.requests.RequestResultHandler;
+import com.rk.yamblz2016introandroid.requests.VolleyRequestMaker;
+
+import java.lang.reflect.Type;
+import java.util.ArrayList;
 
 public class ArtistsListActivity extends AppCompatActivity implements ArtistsListAdapter.ItemClickListener {
     private ArtistsListAdapter adapter;
@@ -36,8 +41,9 @@ public class ArtistsListActivity extends AppCompatActivity implements ArtistsLis
 
         rm.makeRequest(url, new RequestResultHandler() {
             @Override
-            public void onResponse() {
-                // In this onResponse() callback you can get data from Artists.list
+            public void onResponse(String result) {
+                Type listType = new TypeToken<ArrayList<Artist>>(){}.getType();
+                Artists.List = new Gson().fromJson(result, listType);
                 adapter = new ArtistsListAdapter(self, Artists.List);
                 adapter.setClickListener(self);
                 recyclerView.setAdapter(adapter);
@@ -57,10 +63,9 @@ public class ArtistsListActivity extends AppCompatActivity implements ArtistsLis
     @Override
     public void onItemClick(View view, int position) {
         final RecyclerView recyclerView = findViewById(R.id.artistsList);
-        RecyclerView.LayoutManager layoutManager = recyclerView.getLayoutManager();
-        LinearLayoutManager linearLayoutManager = (LinearLayoutManager)layoutManager;
+        LinearLayoutManager linearLayoutManager = (LinearLayoutManager)recyclerView.getLayoutManager();
         layoutPosition = linearLayoutManager.findFirstVisibleItemPosition();
-        View v = layoutManager.getChildAt(0);
+        View v = linearLayoutManager.getChildAt(0);
         offset = v.getTop();
         Intent intent = new Intent(this, ArtistDetailActivity.class);
         Artist artist = Artists.List.get(position);
