@@ -1,5 +1,6 @@
 package com.rk.yamblz2016introandroid.requests;
 
+import java.io.File;
 import java.io.UnsupportedEncodingException;
 import android.content.Context;
 import com.android.volley.*;
@@ -13,7 +14,12 @@ public class VolleyRequestMaker implements RequestMaker {
     }
 
     public void makeRequest(final String url, final RequestResultHandler handler) {
-        RequestQueue queue = Volley.newRequestQueue(context);
+        File cacheDir = context.getCacheDir();
+        boolean isExists = cacheDir.exists();
+        Cache cache = new DiskBasedCache(cacheDir, 512 * 1024);
+        Network network = new BasicNetwork(new HurlStack());
+        RequestQueue mRequestQueue = new RequestQueue(cache, network);
+        mRequestQueue.start();
 
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
                 new Response.Listener<String>() {
@@ -36,6 +42,6 @@ public class VolleyRequestMaker implements RequestMaker {
                     }
                 });
 
-        queue.add(stringRequest);
+        mRequestQueue.add(stringRequest);
     }
 }
