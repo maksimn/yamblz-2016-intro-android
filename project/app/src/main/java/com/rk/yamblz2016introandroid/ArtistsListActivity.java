@@ -39,16 +39,19 @@ public class ArtistsListActivity extends AppCompatActivity implements ArtistsLis
         final RequestMaker rm = new VolleyRequestMaker(this);
         final ArtistsListActivity self = this;
 
+        boolean isAppDataInMemory = Artists.List != null && Artists.List.size() > 0;
+
+        if (isAppDataInMemory) {
+            setAppDataToRecyclerView(this, recyclerView);
+            return;
+        }
+
         rm.makeRequest(url, new RequestResultHandler() {
             @Override
             public void onResponse(String result) {
                 Type listType = new TypeToken<ArrayList<Artist>>(){}.getType();
                 Artists.List = new Gson().fromJson(result, listType);
-                adapter = new ArtistsListAdapter(self, Artists.List);
-                adapter.setClickListener(self);
-                recyclerView.setAdapter(adapter);
-                LinearLayoutManager layoutManager =(LinearLayoutManager)recyclerView.getLayoutManager();
-                layoutManager.scrollToPositionWithOffset(layoutPosition, offset);
+                setAppDataToRecyclerView(self, recyclerView);
             }
 
             @Override
@@ -58,6 +61,18 @@ public class ArtistsListActivity extends AppCompatActivity implements ArtistsLis
                         Toast.LENGTH_LONG).show();
             }
         });
+    }
+
+    private void setAppDataToRecyclerView(ArtistsListActivity context, RecyclerView recyclerView) {
+        adapter = new ArtistsListAdapter(context, Artists.List);
+        adapter.setClickListener(context);
+        recyclerView.setAdapter(adapter);
+        positionRecyclerView(recyclerView);
+    }
+
+    private void positionRecyclerView(RecyclerView recyclerView) {
+        LinearLayoutManager layoutManager =(LinearLayoutManager)recyclerView.getLayoutManager();
+        layoutManager.scrollToPositionWithOffset(layoutPosition, offset);
     }
 
     @Override

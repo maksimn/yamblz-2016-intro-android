@@ -15,7 +15,7 @@ public class VolleyRequestMaker implements RequestMaker {
 
     public void makeRequest(final String url, final RequestResultHandler handler) {
         File cacheDir = context.getCacheDir();
-        boolean isExists = cacheDir.exists();
+        // Cache request data to file:
         Cache cache = new DiskBasedCache(cacheDir, 512 * 1024);
         Network network = new BasicNetwork(new HurlStack());
         RequestQueue mRequestQueue = new RequestQueue(cache, network);
